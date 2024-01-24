@@ -1,9 +1,0 @@
-version: "3.9"
-
-services:
-  wiki:
-    image: itstreason/mediawiki-ext:1.40.1
-    build:
-      context: "."
-      target: production
-
