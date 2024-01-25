@@ -2,13 +2,26 @@ ARG ARCH=
 FROM ${ARCH}debian:bookworm-slim AS build
 
 RUN apt update \
- && apt install unzip curl -y \
+ && apt install unzip curl bash -y \
  && mkdir /tmp/extensions
 
-# Install Auto Create Category Pages
-RUN curl https://codeload.github.com/wikimedia/mediawiki-extensions-AutoCreateCategoryPages/zip/refs/heads/REL1_41 -o /tmp/AutoCreateCategoryPages.zip \
- && unzip /tmp/AutoCreateCategoryPages.zip -d /tmp/AutoCreateCategoryPages
+COPY ./unpackHelper.sh /unpackHelper.sh
+
+ARG VERSION=41
+# Install extensions. The unpackHelper will unpack the extension into /tmp/extensions/${name}
+RUN bash /unpackHelper.sh "AutoCreateCategoryPages"
+RUN bash /unpackHelper.sh "AntiSpoof"
+RUN bash /unpackHelper.sh "intersection"
+RUN bash /unpackHelper.sh "DynamicSidebar"
+RUN bash /unpackHelper.sh "ApprovedRevs"
+RUN bash /unpackHelper.sh "HitCounters"
+RUN bash /unpackHelper.sh "MassMessage"
+RUN bash /unpackHelper.sh "NewUserMessage"
+RUN bash /unpackHelper.sh "Popups"
+RUN bash /unpackHelper.sh "AdvancedSearch"
+RUN bash /unpackHelper.sh "LoginNotify"
 
 FROM ${ARCH}mediawiki:1.41.0 AS production
 
-COPY --from=build /tmp/AutoCreateCategoryPages/* /var/www/html/extensions/AutoCreateCategoryPages
+COPY --from=build --chown=www-data:www-data /tmp/extensions/ /var/www/html/extensions/
+
