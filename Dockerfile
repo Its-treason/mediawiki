@@ -21,7 +21,7 @@ RUN bash /unpackHelper.sh "Popups"
 RUN bash /unpackHelper.sh "AdvancedSearch"
 RUN bash /unpackHelper.sh "LoginNotify"
 
-FROM ${ARCH}mediawiki:1.41.0 AS production
+FROM ${ARCH}mediawiki:1.41.1 AS production
 
 COPY --from=build --chown=www-data:www-data /tmp/extensions/ /var/www/html/extensions/
 
