@@ -7,7 +7,7 @@ RUN apt update \
 
 COPY ./unpackHelper.sh /unpackHelper.sh
 
-ARG VERSION=41
+ARG VERSION=42
 # Install extensions. The unpackHelper will unpack the extension into /tmp/extensions/${name}
 RUN bash /unpackHelper.sh "AutoCreateCategoryPages"
 RUN bash /unpackHelper.sh "AntiSpoof"
@@ -21,7 +21,7 @@ RUN bash /unpackHelper.sh "Popups"
 RUN bash /unpackHelper.sh "AdvancedSearch"
 RUN bash /unpackHelper.sh "LoginNotify"
 
-FROM ${ARCH}mediawiki:1.41.1 AS production
+FROM ${ARCH}mediawiki:1.42.1 AS production
 
 COPY --from=build --chown=www-data:www-data /tmp/extensions/ /var/www/html/extensions/
 
