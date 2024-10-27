@@ -28,7 +28,7 @@ Extra extensions:
 - [LoginNotify](https://www.mediawiki.org/wiki/Extension:LoginNotify)
   - notifies you when someone logs into your account
 
-Preinstalled extensions (Version 1.41.0):
+Preinstalled extensions (Version 1.42.3):
 - AbuseFilter
 - CategoryTree
 - Cite
@@ -67,6 +67,6 @@ Preinstalled extensions (Version 1.41.0):
 ## Building
 
 ```shell
-docker buildx build --push --platform linux/arm64/v8,linux/amd64/v3 --tag itstreason/mediawiki-ext:1.41.0 .
+docker buildx build --push --platform linux/arm64/v8,linux/amd64/v3 --tag itstreason/mediawiki-ext:1.42.3.1 .
 ```
 
