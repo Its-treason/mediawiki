@@ -20,8 +20,8 @@ RUN bash /unpackHelper.sh "NewUserMessage"
 RUN bash /unpackHelper.sh "Popups"
 RUN bash /unpackHelper.sh "AdvancedSearch"
 RUN bash /unpackHelper.sh "LoginNotify"
+RUN bash /unpackHelper.sh "Cargo"
 
-FROM ${ARCH}mediawiki:1.42.1 AS production
+FROM ${ARCH}mediawiki:1.42.4 AS production
 
 COPY --from=build --chown=www-data:www-data /tmp/extensions/ /var/www/html/extensions/
-
