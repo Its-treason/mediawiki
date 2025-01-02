@@ -27,8 +27,10 @@ Extra extensions:
   - enhances Special:Search by providing an advanced parameters form and improving how namespaces for a search query are selected
 - [LoginNotify](https://www.mediawiki.org/wiki/Extension:LoginNotify)
   - notifies you when someone logs into your account
+- [Cargo](https://www.mediawiki.org/wiki/Extension:Cargo)
+  - is an extension to MediaWiki that provides a lightweight way to store and query the data contained within the calls to templates, such as infoboxes.
 
-Preinstalled extensions (Version 1.42.3):
+Preinstalled extensions (Version 1.42.4):
 - AbuseFilter
 - CategoryTree
 - Cite
@@ -69,4 +71,3 @@ Preinstalled extensions (Version 1.42.3):
 ```shell
 docker buildx build --push --platform linux/arm64/v8,linux/amd64/v3 --tag itstreason/mediawiki-ext:1.42.4.1 .
 ```
-
